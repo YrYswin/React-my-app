@@ -63,7 +63,7 @@ export default class Item extends Component {
                 <button onClick={this.increment}>+</button>
                 <button onClick={this.decremnet}>-</button>
                 <button onClick={this.plusTen}>+10</button>
-                <button onClick={this.minusTen}>-10</button>
+                <button onClick={this.minusTen}> -10</button>
                 <button onClick={this.multiply}>x2</button>
                 <button onClick={this.divide}>/2</button><br />
 

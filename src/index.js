@@ -6,9 +6,7 @@ import Item from './item';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
-
-    <Item></Item>
+    <App />
   </React.StrictMode>
 );
 

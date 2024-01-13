@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;1,100;1,200&family=Nova+Square&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Yellowtail&display=swap');
+
+.banner {
+    width: 100%;
+    height: 578px;
+}
+
+.banner .backgroundImg {
+    position: relative;
+}
+
+.backgroundImg>img {
+    position: absolute;
+    width: 700px;
+    right: 0px;
+}
+
+.backgroundImg .one {
+    left: 0;
+    width: 220px;
+}
+
+.backgroundImg .two {
+    left: 180px;
+    top: 140px;
+    width: 100px;
+}
+
+.backgroundImg .three {
+    top: 0;
+    z-index: 100;
+    width: 180px;
+    left: 700px;
+    top: 80px;
+}
+
+.backgroundImg .four {
+    z-index: 100;
+    width: 100px;
+    right: 100px;
+    top: 40px;
+}
+
+.backgroundImg .five {
+    z-index: 100;
+    top: 440px;
+    right: 40px;
+    width: 120px;
+}
+
+.content {
+    position: absolute;
+    width: 400px;
+    top: 2250px;
+    left: 290px
+}
+
+.content .title h1 {
+    font-family: Yellowtail;
+    color: rgb(56, 116, 56)
+}
+
+.content .title h3 {
+    font-size: 50px;
+    font-family: Roboto;
+    font-weight: 400;
+    margin: 20px 0;
+}
+
+.content .button {
+    display: flex;
+    justify-content: start;
+}
+
+.content .button button {
+    width: 210px;
+    background-color: rgb(248, 248, 22);
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 4px 40px;
+    font-family: Poppins;
+    font-weight: 600;
+}

@@ -1,0 +1,11 @@
+.item-service {
+    width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 15px;
+    border: 2px solid black;
+    box-shadow: 0px 4px 8px black;
+    border-radius: 8px;
+}
