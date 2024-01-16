@@ -1,0 +1,43 @@
+.wrapper-product {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.product-card {
+    align-items: center;
+    width: 250px;
+    border: 1px solid gray;
+    position: relative;
+}
+
+.product-card img {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.product-card .title {
+    position: absolute;
+    background-color: rgb(239, 173, 49);
+    color: #eee;
+    padding: 1px 5px;
+    border-radius: 4px;
+    left: 7px;
+    top: 6px;
+}
+
+.overview {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.product-card>span {
+    position: absolute;
+    background-color: orange;
+    top: 4px;
+    right: 6px;
+    padding: 3px;
+    border-radius: 5px;
+    color: #eee;
+}
