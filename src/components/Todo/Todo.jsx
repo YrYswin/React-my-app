@@ -3,7 +3,7 @@ import './Todo.css'
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
 
-function Todo() {
+export default function Todo() {
     const now = new Date()
 
     const [todos, setTodos] = useState([
@@ -14,8 +14,6 @@ function Todo() {
         { title: "Go bowling with friends", completed: false, id: 5, },
         { title: "Do you homework", completed: false, id: 6, },
     ])
-
-    console.log(todos)
 
     const addTodoHandler = (text) => {
         if (text.trim() !== '') {
@@ -43,19 +41,35 @@ function Todo() {
         setTodos((todos) => todos.filter((todo) => !todo.completed))
     }
 
+    const DeleteAllHandle = () => {
+        setTodos([])
+    }
+
+    const editTodoHandler = (id, text) => {
+        if (text != '') {
+            setTodos(
+                todos.map((todo) => todo.id === id ? { ...todo, title: text } : todo)
+            )
+        }
+    }
+
     return (
         <div>
             <div className="header">
                 <h1>Todo app</h1>
-                <button className='btn' onClick={DeleteCompletedHandle}>Clear</button>
+                <button className='btn' onClick={DeleteCompletedHandle}>Delete completed</button>
+                <button className='btn' onClick={DeleteAllHandle}>Delete all</button>
                 <span>The time is now: {now.toLocaleTimeString()}</span>
             </div>
 
 
             <TodoForm addTodo={addTodoHandler} />
-            <TodoList todos={todos} deleteTodo={DeleteTodoHandler} checkTodo={CheckInputHandler} />
+            <TodoList
+                todos={todos}
+                deleteTodo={DeleteTodoHandler}
+                checkTodo={CheckInputHandler}
+                editTodo={editTodoHandler}
+            ></TodoList>
         </div>
     )
 }
-
-export default Todo
