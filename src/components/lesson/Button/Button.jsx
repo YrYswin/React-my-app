@@ -1,15 +1,16 @@
 import React from 'react'
-import './Button..css'
+import classes from './Button.module.css'
 
 function Button({ children, onClick, isActive }) {
-    // let classes = 'button'
-    // if (isActive) classes += 'active'
+   // let classes = 'button'
+   // if (isActive) classes += 'active'
+   console.log(classes)
 
-    return (
-        <button className={isActive ? 'button active' : 'button'} onClick={onClick} >
-            {children}
-        </button >
-    )
+   return (
+      <button className={isActive ? `${classes.active} ${classes.button}` : classes.button} onClick={onClick} >
+         {children}
+      </button >
+   )
 }
 
 export default Button

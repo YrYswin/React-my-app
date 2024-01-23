@@ -6,23 +6,24 @@ import Todo from './components/Todo/Todo'
 import Wrapper from './components/Wrapper/Wrapper'
 import Main from './components/UseEffect/Main'
 
+import Post from './components/UseEffect/Post'
+
 export default function App() {
-  return (
-    <div className="App">
-      {/* <Todo /> */}
-      {/* <Apps /> */}
+   return (
+      <div className="App">
+         {/* <Todo /> */}
+         {/* <Apps /> */}
 
-      {/* <Wrapper color='Lightblue'>
-        <div>Hello Danel</div>
-        <button>Click me!</button>
-      </Wrapper> */}
+         <Wrapper color='Lightgreen'>
+            <Post />
+         </Wrapper>
 
 
-      <Wrapper color='Lightgreen'>
+         {/* <Wrapper color='Lightgreen'>
         <Main />
         <Todo></Todo>
-      </Wrapper>
-    </div>
-  );
+      </Wrapper> */}
+      </div>
+   );
 }
 

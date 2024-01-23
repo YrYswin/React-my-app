@@ -1,10 +1,15 @@
 ul>li {
-    box-shadow: 10px 20px 80px gray;
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin: 6px auto;
+   box-shadow: 10px 20px 80px gray;
+   padding: 10px 20px;
+   border-radius: 10px;
+   margin: 6px auto;
+   background-color: beige;
 }
 
 p {
-    margin: 0;
+   margin: 0;
+}
+
+.centered {
+   text-align: center;
 }

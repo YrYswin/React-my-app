@@ -1,13 +1,19 @@
 import React from 'react'
 
-function User({ data, getUser }) {
-    return (
-        <div onClick={() => getUser(data.id)}>
-            <img src={data.avatar} alt={data.first_name} />
-            <h2>{data.first_name} {data.last_name}</h2>
-            <p>{data.email}</p>
-        </div>
-    )
+function User({ item, openPopup, deleteUser }) {
+   return (
+      <div key={item.id} >
+         <div className="while">
+            <img src={item.avatar} alt={item.avatar} />
+         </div>
+         <div className="btns">
+            <h5>{item.name} {item.lastName}</h5>
+            <p>{item.createdAt}</p>
+            <button className='update' onClick={() => openPopup(item.id)}>Update</button>
+            <button className='delete' onClick={() => deleteUser(item.id)}>Delete</button>
+         </div>
+      </div>
+   )
 }
 
 export default User

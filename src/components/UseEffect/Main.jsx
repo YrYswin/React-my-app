@@ -33,7 +33,7 @@ export default function Main() {
                     ))
                 }
             </div>
-            <div className="about" onClick={deletePerson}>
+            <div className="about" onDoubleClick={deletePerson}>
                 <img src={userAbout.avatar} alt={userAbout.first_name} />
                 <h2>{userAbout.first_name} {userAbout.last_name}</h2>
                 <p>{userAbout.email}</p>
