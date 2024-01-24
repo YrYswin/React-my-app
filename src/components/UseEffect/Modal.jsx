@@ -22,6 +22,7 @@ function Modal({ updateUser, handleChange, closePopup, saveChange }) {
                placeholder='avatar (url)'
                value={updateUser.avatar}
             />
+            <img src={updateUser.avatar} alt={updateUser.name} />
 
             <div className='group'>
                <button className='save' onClick={() => saveChange(updateUser.id)}>Save</button>

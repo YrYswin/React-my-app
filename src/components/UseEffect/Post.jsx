@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 import User from './User'
 import Modal from './Modal'
@@ -7,11 +7,13 @@ import CreatePerson from './CreatePerson'
 const API = "https://65ab6a1efcd1c9dcffc659a4.mockapi.io/api/v1/users"
 
 export default function Post() {
-   const [user, setUser] = useState([])
+   const [user, setUser] = useState([''])
    const [active, setActive] = useState(false)
-   const [updateUser, setUpdateUser] = useState([])
+   const [updateUser, setUpdateUser] = useState([''])
    const [activeCreate, setActiveCreate] = useState(false)
+   const [activeCreateSuccess, setActiveCreateSuccess] = useState(false)
    const [service, setService] = useState(false)
+   const [message, setMessage] = useState('')
 
    async function getUser() {
       try {
@@ -21,6 +23,12 @@ export default function Post() {
       } catch (error) {
          console.log('Error', error)
       }
+   }
+
+   const handleChange = (event) => {
+      const { name, value } = event.target
+      // setUpdateUser({ ...updateUser, [name]: value })
+      setUpdateUser((prevUpdateUser) => ({ ...prevUpdateUser, [name]: value }));
    }
 
    useEffect(() => {
@@ -50,6 +58,7 @@ export default function Post() {
          if (res.status === 200) {
             setActive(false)
             setService(!service)
+            successAchieved('Update')
          }
       } catch (error) {
          console.log('Error in saveChange', error)
@@ -58,8 +67,9 @@ export default function Post() {
 
    async function deleteUser(id) {
       try {
-         const res = await axios.delete(`${API}/${id}`)
+         await axios.delete(`${API}/${id}`)
          setService(!service)
+         successAchieved('Delete')
       } catch (error) {
          console.log('Error in deleteUser', error)
       }
@@ -71,12 +81,30 @@ export default function Post() {
    function closeCreatePopup() {
       setActiveCreate(false)
    }
-
-   const handleChange = (event) => {
-      const { name, value } = event.target
-      // setUpdateUser({ ...updateUser, [name]: value })
-      setUpdateUser((prevUpdateUser) => ({ ...prevUpdateUser, [name]: value }));
+   function successAchieved(messageInSuccess) {
+      setActiveCreateSuccess(true)
+      setMessage(messageInSuccess)
    }
+
+   const handleKeyPress = (event) => {
+      setActiveCreateSuccess(false);
+   };
+
+   const handleOutsideClick = (event) => {
+      if (event.target.closest('.createSuccesfull')) {
+         setActiveCreateSuccess(false);
+      }
+   };
+
+   useEffect(() => {
+      document.addEventListener('keydown', handleKeyPress);
+      document.addEventListener('click', handleOutsideClick);
+
+      return () => {
+         document.removeEventListener('keydown', handleKeyPress);
+         document.removeEventListener('click', handleOutsideClick);
+      };
+   }, [])
 
    return (
       <div>
@@ -87,10 +115,26 @@ export default function Post() {
             >
                Create a new Person
             </button>
+
+            {
+               activeCreateSuccess &&
+               <div className='createSuccesfull'>
+                  <div>
+                     <h2>{message} person succesfull</h2>
+                     <h5>Click to continue</h5>
+                  </div>
+               </div>
+            }
+
+            {
+               activeCreate &&
+               <CreatePerson
+                  closeCreatePopup={closeCreatePopup}
+                  getUser={getUser}
+                  successAchieved={successAchieved}
+               />
+            }
          </div>
-         {
-            activeCreate && <CreatePerson closeCreatePopup={closeCreatePopup} getUser={getUser} setService={setService} />
-         }
 
          <div className="user">
             {
@@ -101,7 +145,13 @@ export default function Post() {
          </div>
 
          {
-            active && <Modal updateUser={updateUser} handleChange={handleChange} closePopup={closePopup} saveChange={saveChange} />
+            active &&
+            <Modal
+               updateUser={updateUser}
+               handleChange={handleChange}
+               closePopup={closePopup}
+               saveChange={saveChange}
+            />
          }
 
       </div>

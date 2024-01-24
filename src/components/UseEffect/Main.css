@@ -40,9 +40,8 @@ footer {
 
 .user>div {
    width: 250px;
-   max-height: 750px;
-   min-height: 350px;
-   height: 100%;
+   height: 500px;
+   /* height: 100%; */
    border: 1px solid red;
    border-radius: 10px;
    background-color: rgba(30, 30, 30, .4);
@@ -82,12 +81,13 @@ p {
 .user div>button {
    width: 50%;
    box-sizing: border-box;
+   font-size: 17px;
    border: none;
    margin-bottom: 14px;
    color: #eee;
    font-family: Josefin Sans;
    font-weight: bold;
-   padding: 6px auto;
+   padding: 3px;
 }
 
 .user div .update {
@@ -121,13 +121,18 @@ p {
 
 .popup {
    padding: 20px;
-   background-color: #fff;
+   background-color: rgba(155, 148, 148, 0.5);
    border-radius: 8px;
    max-width: 400px;
    width: 100%;
    display: flex;
    flex-direction: column;
    gap: 20px;
+}
+
+.popup img {
+   width: 200px;
+   margin: auto;
 }
 
 .group {
@@ -167,4 +172,32 @@ p {
    display: flex;
    justify-content: center;
    margin: 20px;
+}
+
+.deleteHeader {
+   font-size: 17px;
+   text-align: center;
+}
+
+.createSuccesfull {
+   position: fixed;
+   z-index: 99;
+   left: 40%;
+   top: 40%;
+   right: 40%;
+   bottom: 40%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: rgba(0, 0, 0, 0.7);
+   text-shadow:
+      20px 20px 40px rgba(210, 50, 40, 0.7),
+      -20px 20px 40px rgba(210, 50, 40, 0.7),
+      20px -20px 40px rgba(210, 50, 40, 0.7),
+      -20px -20px 40px rgba(210, 10, 40, 0.7);
+   border-radius: 10px;
+   font-family: Josefin Sans;
+   font-size: 18px;
+   text-align: center;
+   color: #eee;
 }

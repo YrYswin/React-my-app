@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const API = "https://65ab6a1efcd1c9dcffc659a4.mockapi.io/api/v1/users"
 
-function CreatePerson({ closeCreatePopup, getUser, setService }) {
+function CreatePerson({ closeCreatePopup, getUser, successAchieved }) {
    const [newUser, setNewUser] = useState({
       name: '',
       lastName: '',
@@ -18,10 +18,9 @@ function CreatePerson({ closeCreatePopup, getUser, setService }) {
    async function createPerson() {
       try {
          const res = await axios.post(API, newUser)
-         if (res.status === 200) {
-            setService(true)
-            closeCreatePopup()
-         }
+         getUser(res.data.id)
+         closeCreatePopup()
+         successAchieved('Create')
       } catch (error) {
          console.log('Error in createPerson', error)
       }
@@ -35,20 +34,21 @@ function CreatePerson({ closeCreatePopup, getUser, setService }) {
                type="text" name='name'
                placeholder='name'
                onChange={handleChange}
-               value={newUser.name}
+               value={newUser.name || ''}
             />
             <input
                onChange={handleChange}
                type="text" name='lastName'
                placeholder='lastName'
-               value={newUser.lastName}
+               value={newUser.lastName || ''}
             />
             <input
                onChange={handleChange}
                type='url' name='avatar'
                placeholder='avatar (url)'
-               value={newUser.avatar}
+               value={newUser.avatar || ''}
             />
+            <img src={newUser.avatar} alt={newUser.name} />
 
             <div className='group'>
                <button className='save' onClick={createPerson}>Create</button>
